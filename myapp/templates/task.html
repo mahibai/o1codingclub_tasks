@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Task Page</h1>
+    
+    <!-- Task form -->
+    <form method="post">
+        {% csrf_token %}
+        <label for="task_description">Enter Task:</label>
+        <input type="text" id="task_description" name="task_description" required>
+        <button type="submit">Add Task</button>
+    </form>
+    
+    <!-- Task list -->
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
